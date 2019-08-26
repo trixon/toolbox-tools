@@ -7,8 +7,8 @@
         <version>3.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>se.trixon.toolbox-tools</groupId>
-    <artifactId>tools-parent</artifactId>
+    <groupId>se.trixon.tools</groupId>
+    <artifactId>parent</artifactId>
     <packaging>pom</packaging>
     <url>https://github.com/trixon/toolbox-tools</url>
     <licenses>
@@ -81,23 +81,4 @@
     <modules>
         <module>filebydate</module>
     </modules>
-
-    <!--    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-trixon-maven</id>
-            <url>https://dl.bintray.com/trixon/maven</url>
-        </repository>
-    </repositories>
-
-    <properties>
-        <netbeans.version>RELEASE111</netbeans.version>
-        <netbeans.compile.on.save>all</netbeans.compile.on.save>
-        <brandingToken>toolbox</brandingToken>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <toolbox.version>3.0.0-SNAPSHOT</toolbox.version>
-        <almond.version>3.0.5-SNAPSHOT</almond.version>
-    </properties>-->
 </project>
