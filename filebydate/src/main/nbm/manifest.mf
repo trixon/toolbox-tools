@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Layer: se/trixon/toolbox/tools/fbd/layer.xml
+OpenIDE-Module-Localizing-Bundle: se/trixon/toolbox/tools/fbd/Bundle.properties
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>se.trixon.toolbox-tools</groupId>
+        <artifactId>tools-parent</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>filebydate</artifactId>
+    <name>filebydate</name>
+    <packaging>nbm</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.netbeans.utilities</groupId>
+                <artifactId>nbm-maven-plugin</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <!--NetBeans-->
+
+        <!--Toolbox-->
+        <dependency>
+            <groupId>se.trixon.toolbox</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
+
+        <!--Trixon-->
+        <dependency>
+            <groupId>se.trixon.almond</groupId>
+            <artifactId>almond-nbp-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>se.trixon.almond</groupId>
+            <artifactId>almond-util</artifactId>
+        </dependency>
+
+        <!--Other-->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+        </dependency>
+        <!--        <dependency>
+            <groupId>com.dlsc.workbenchfx</groupId>
+            <artifactId>workbenchfx-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dlsc.preferencesfx</groupId>
+            <artifactId>preferencesfx-core</artifactId>
+        </dependency>-->
+    </dependencies>
+    <properties>
+        <netbeans.hint.license>apache20</netbeans.hint.license>
+    </properties>
+</project>
