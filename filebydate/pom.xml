@@ -10,6 +10,7 @@
     <artifactId>filebydate</artifactId>
     <name>filebydate</name>
     <packaging>nbm</packaging>
+    
     <build>
         <plugins>
             <plugin>
@@ -32,8 +33,14 @@
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <!--NetBeans-->
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-util</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
 
         <!--Toolbox-->
         <dependency>
@@ -46,25 +53,8 @@
             <groupId>se.trixon.almond</groupId>
             <artifactId>almond-nbp-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>se.trixon.almond</groupId>
-            <artifactId>almond-util</artifactId>
-        </dependency>
-
-        <!--Other-->
-        <dependency>
-            <groupId>org.controlsfx</groupId>
-            <artifactId>controlsfx</artifactId>
-        </dependency>
-        <!--        <dependency>
-            <groupId>com.dlsc.workbenchfx</groupId>
-            <artifactId>workbenchfx-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.dlsc.preferencesfx</groupId>
-            <artifactId>preferencesfx-core</artifactId>
-        </dependency>-->
     </dependencies>
+
     <properties>
         <netbeans.hint.license>apache20</netbeans.hint.license>
     </properties>
