@@ -90,5 +90,6 @@
 
     <modules>
         <module>filebydate</module>
+        <module>mapollage</module>
     </modules>
 </project>
