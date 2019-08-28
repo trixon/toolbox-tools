@@ -10,7 +10,7 @@
     <artifactId>mapollage</artifactId>
     <name>mapollage</name>
     <packaging>nbm</packaging>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -52,6 +52,12 @@
         <dependency>
             <groupId>se.trixon.almond</groupId>
             <artifactId>almond-nbp-core</artifactId>
+        </dependency>
+
+        <!--Other-->
+        <dependency>
+            <groupId>de.micromata.jak</groupId>
+            <artifactId>JavaAPIforKml</artifactId>
         </dependency>
     </dependencies>
 
