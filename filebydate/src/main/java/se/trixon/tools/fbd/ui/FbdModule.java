@@ -27,8 +27,8 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.icons.material.MaterialIcon;
-import se.trixon.toolbox.api.RunState;
-import static se.trixon.toolbox.api.Toolbox.*;
+import se.trixon.toolbox.api.TbRunState;
+import static se.trixon.toolbox.api.TbToolbox.*;
 
 public class FbdModule extends WorkbenchModule {
 
@@ -65,10 +65,10 @@ public class FbdModule extends WorkbenchModule {
             mFirstRun = false;
         }
 
-        setRunningState(RunState.STARTABLE);
+        setRunningState(TbRunState.STARTABLE);
     }
 
-    public void setRunningState(RunState runState) {
+    public void setRunningState(TbRunState runState) {
         Platform.runLater(() -> {
             switch (runState) {
                 case STARTABLE:
@@ -124,7 +124,7 @@ public class FbdModule extends WorkbenchModule {
                 MaterialIcon._Action.LIST.getImageView(ICON_SIZE_TOOLBAR),
                 event -> {
                     mLogToolbarItem.setDisable(false);
-                    setRunningState(RunState.STARTABLE);
+                    setRunningState(TbRunState.STARTABLE);
                     mView.doNavHome();
                 }
         );
@@ -133,7 +133,7 @@ public class FbdModule extends WorkbenchModule {
         mLogToolbarItem = new ToolbarItem(
                 MaterialIcon._Editor.FORMAT_ALIGN_LEFT.getImageView(ICON_SIZE_TOOLBAR),
                 event -> {
-                    setRunningState(RunState.CLOSEABLE);
+                    setRunningState(TbRunState.CLOSEABLE);
                     mView.doNavLog();
                 }
         );

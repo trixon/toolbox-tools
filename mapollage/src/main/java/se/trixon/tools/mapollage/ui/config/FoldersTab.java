@@ -37,7 +37,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.controlsfx.validation.Validator;
 import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.icons.material.MaterialIcon;
-import static se.trixon.toolbox.api.Toolbox.*;
+import static se.trixon.toolbox.api.TbToolbox.*;
 import se.trixon.tools.mapollage.profile.Profile;
 import se.trixon.tools.mapollage.profile.ProfileFolder;
 import se.trixon.tools.mapollage.profile.ProfileFolder.FolderBy;
@@ -251,7 +251,7 @@ public class FoldersTab extends BaseTab {
         String datePreview;
 
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(mDatePatternComboBox.getValue(), mPreferences.general().getLocale());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(mDatePatternComboBox.getValue(), mTbPreferences.general().getLocale());
             datePreview = simpleDateFormat.format(new Date(System.currentTimeMillis()));
         } catch (IllegalArgumentException ex) {
             datePreview = Dict.Dialog.ERROR.toString();

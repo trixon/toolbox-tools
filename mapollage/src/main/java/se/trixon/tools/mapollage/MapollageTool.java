@@ -16,15 +16,15 @@
 package se.trixon.tools.mapollage;
 
 import org.openide.util.lookup.ServiceProvider;
-import se.trixon.toolbox.api.Tool;
+import se.trixon.toolbox.api.TbTool;
 import se.trixon.tools.mapollage.ui.MapollageModule;
 
 /**
  *
  * @author Patrik Karlström
  */
-@ServiceProvider(service = Tool.class)
-public class MapollageTool extends Tool {
+@ServiceProvider(service = TbTool.class)
+public class MapollageTool extends TbTool {
 
     public MapollageTool() {
         setName("Mapollage");

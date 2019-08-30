@@ -55,10 +55,9 @@ import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.SystemHelper;
 import se.trixon.almond.util.fx.FxHelper;
 import se.trixon.almond.util.icons.material.MaterialIcon;
-import se.trixon.toolbox.api.NameCase;
-import se.trixon.toolbox.api.Preferences;
-import se.trixon.toolbox.api.RunState;
-import static se.trixon.toolbox.api.Toolbox.*;
+import se.trixon.toolbox.api.TbNameCase;
+import se.trixon.toolbox.api.TbRunState;
+import static se.trixon.toolbox.api.TbToolbox.*;
 import se.trixon.tools.fbd.Operation;
 import se.trixon.tools.fbd.OperationListener;
 import se.trixon.tools.fbd.Profile;
@@ -81,7 +80,6 @@ public class FbdView extends BorderPane {
     private final FbdModule mModule;
     private OperationListener mOperationListener;
     private Thread mOperationThread;
-    private final Preferences mPreferences = Preferences.getInstance();
     private PreviewPanel mPreviewPanel;
     private final ProfileManager mProfileManager = ProfileManager.getInstance();
     private LinkedList<Profile> mProfiles;
@@ -130,8 +128,8 @@ public class FbdView extends BorderPane {
             profile.setFollowLinks(true);
             profile.setRecursive(true);
             profile.setReplaceExisting(false);
-            profile.setCaseBase(NameCase.UNCHANGED);
-            profile.setCaseExt(NameCase.UNCHANGED);
+            profile.setCaseBase(TbNameCase.UNCHANGED);
+            profile.setCaseExt(TbNameCase.UNCHANGED);
         } else if (clone) {
             title = Dict.CLONE.toString();
             profile.setLastRun(0);
@@ -194,7 +192,7 @@ public class FbdView extends BorderPane {
 
             @Override
             public void onOperationFinished(String message, int fileCount) {
-                mModule.setRunningState(RunState.CLOSEABLE);
+                mModule.setRunningState(TbRunState.CLOSEABLE);
                 mProgressPanel.out(Dict.DONE.toString());
                 populateProfiles(mLastRunProfile);
 
@@ -205,7 +203,7 @@ public class FbdView extends BorderPane {
 
             @Override
             public void onOperationInterrupted() {
-                mModule.setRunningState(RunState.CLOSEABLE);
+                mModule.setRunningState(TbRunState.CLOSEABLE);
                 mProgressPanel.setProgress(0);
                 mSuccess = false;
             }
@@ -227,7 +225,7 @@ public class FbdView extends BorderPane {
 
             @Override
             public void onOperationStarted() {
-                mModule.setRunningState(RunState.CANCELABLE);
+                mModule.setRunningState(TbRunState.CANCELABLE);
                 mProgressPanel.setProgress(0);
                 mSuccess = true;
             }

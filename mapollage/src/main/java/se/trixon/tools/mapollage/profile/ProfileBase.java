@@ -18,9 +18,8 @@ package se.trixon.tools.mapollage.profile;
 import java.util.ResourceBundle;
 import org.apache.commons.lang3.StringUtils;
 import se.trixon.almond.util.SystemHelper;
-import se.trixon.toolbox.api.GeneralPreferences;
-import se.trixon.toolbox.api.Preferences;
-import se.trixon.tools.mapollage.Aaaaa;
+import se.trixon.toolbox.api.TbGeneralPreferences;
+import se.trixon.toolbox.api.TbPreferences;
 import se.trixon.tools.mapollage.Mapollage;
 import se.trixon.tools.mapollage.MapollagePreferences;
 import se.trixon.tools.mapollage.ui.config.BaseTab;
@@ -34,8 +33,9 @@ public abstract class ProfileBase {
     protected static final ResourceBundle BUNDLE = SystemHelper.getBundle(Mapollage.class, "Bundle");
     protected static final ResourceBundle BUNDLE_UI = SystemHelper.getBundle(BaseTab.class, "Bundle");
     protected static StringBuilder sValidationErrorBuilder;
-    protected transient final GeneralPreferences mPreferencesGeneral = Preferences.getInstance().general();
-    protected transient final MapollagePreferences mPreferencesMapollage = Aaaaa.mMapollagePreferences;
+    protected transient final TbPreferences mTbPreferences = TbPreferences.getInstance();
+    protected transient final TbGeneralPreferences mPreferencesGeneral = mTbPreferences.general();
+    protected transient final MapollagePreferences mPreferences = mTbPreferences.getForClass(MapollagePreferences.class);
 
     public ProfileBase() {
     }

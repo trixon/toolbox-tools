@@ -23,7 +23,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import org.controlsfx.validation.ValidationSupport;
 import se.trixon.almond.util.SystemHelper;
-import se.trixon.toolbox.api.Preferences;
+import se.trixon.toolbox.api.TbPreferences;
 import se.trixon.tools.mapollage.ProfileManager;
 import se.trixon.tools.mapollage.profile.Profile;
 
@@ -38,7 +38,7 @@ public abstract class BaseTab extends Tab {
     protected static ValidationSupport sValidationSupport;
     protected final ResourceBundle mBundle = SystemHelper.getBundle(BaseTab.class, "Bundle");
     protected final String mHeaderPrefix = " + ";
-    protected final Preferences mPreferences = Preferences.getInstance();
+    protected final TbPreferences mTbPreferences = TbPreferences.getInstance();
     protected Profile mProfile;
     protected final ProfileManager mProfileManager = ProfileManager.getInstance();
     protected String mTitle;
@@ -52,7 +52,7 @@ public abstract class BaseTab extends Tab {
     }
 
     public Locale getDateFormatLocale() {
-        return mPreferences.general().getLocale();
+        return mTbPreferences.general().getLocale();
     }
 
     public String getTitle() {

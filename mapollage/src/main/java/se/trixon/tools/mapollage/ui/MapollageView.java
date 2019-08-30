@@ -60,9 +60,9 @@ import se.trixon.almond.util.fx.FxHelper;
 import se.trixon.almond.util.fx.control.LogPanel;
 import se.trixon.almond.util.fx.dialogs.SimpleDialog;
 import se.trixon.almond.util.icons.material.MaterialIcon;
-import se.trixon.toolbox.api.RunState;
-import static se.trixon.toolbox.api.Toolbox.*;
-import se.trixon.tools.mapollage.Aaaaa;
+import se.trixon.toolbox.api.TbPreferences;
+import se.trixon.toolbox.api.TbRunState;
+import static se.trixon.toolbox.api.TbToolbox.*;
 import se.trixon.tools.mapollage.MapollagePreferences;
 import se.trixon.tools.mapollage.Operation;
 import se.trixon.tools.mapollage.OperationListener;
@@ -88,7 +88,7 @@ public class MapollageView extends BorderPane {
     private Button mOpenButton;
     private OperationListener mOperationListener;
     private Thread mOperationThread;
-    private final MapollagePreferences mPreferences = Aaaaa.mMapollagePreferences;
+    private final MapollagePreferences mPreferences = TbPreferences.getInstance().getForClass(MapollagePreferences.class);
     private final ProfileManager mProfileManager = ProfileManager.getInstance();
     private LinkedList<Profile> mProfiles;
     private final ProgressPanel mProgressPanel = new ProgressPanel();
@@ -199,7 +199,7 @@ public class MapollageView extends BorderPane {
 
             @Override
             public void onOperationFinished(String message, int placemarkCount) {
-                mModule.setRunningState(RunState.CLOSEABLE);
+                mModule.setRunningState(TbRunState.CLOSEABLE);
                 mProgressPanel.out(message);
 
                 if (mSuccess && placemarkCount > 0) {
@@ -216,7 +216,7 @@ public class MapollageView extends BorderPane {
 
             @Override
             public void onOperationInterrupted() {
-                mModule.setRunningState(RunState.CLOSEABLE);
+                mModule.setRunningState(TbRunState.CLOSEABLE);
                 mProgressPanel.setProgress(0);
                 mSuccess = false;
             }
@@ -243,7 +243,7 @@ public class MapollageView extends BorderPane {
 
             @Override
             public void onOperationStarted() {
-                mModule.setRunningState(RunState.CANCELABLE);
+                mModule.setRunningState(TbRunState.CANCELABLE);
                 mOpenButton.setDisable(true);
                 mProgressPanel.setProgress(0);
                 mSuccess = true;

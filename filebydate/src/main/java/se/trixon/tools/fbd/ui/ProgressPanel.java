@@ -27,8 +27,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.fx.control.LogPanel;
-import se.trixon.toolbox.api.GeneralPreferences;
-import se.trixon.toolbox.api.Preferences;
+import se.trixon.toolbox.api.TbGeneralPreferences;
+import se.trixon.toolbox.api.TbPreferences;
 
 /**
  *
@@ -37,7 +37,7 @@ import se.trixon.toolbox.api.Preferences;
 public class ProgressPanel extends BorderPane {
 
     private final Tab mErrTab = new Tab(Dict.Dialog.ERROR.toString());
-    private final GeneralPreferences mGeneralPreference = Preferences.getInstance().general();
+    private final TbGeneralPreferences mTbGeneralPreference = TbPreferences.getInstance().general();
     private final LogPanel mLogErrPanel = new LogPanel();
     private final LogPanel mLogOutPanel = new LogPanel();
     private final Tab mOutTab = new Tab(Dict.OUTPUT.toString());
@@ -63,10 +63,10 @@ public class ProgressPanel extends BorderPane {
         setCenter(mTabPane);
         setBottom(box);
 
-        mLogOutPanel.setWrapText(mGeneralPreference.isWordWrap());
-        mLogErrPanel.setWrapText(mGeneralPreference.isWordWrap());
+        mLogOutPanel.setWrapText(mTbGeneralPreference.isWordWrap());
+        mLogErrPanel.setWrapText(mTbGeneralPreference.isWordWrap());
 
-        mGeneralPreference.wordWrapProperty().addListener((ObservableValue<? extends Boolean> ov, Boolean t, Boolean newWordWrap) -> {
+        mTbGeneralPreference.wordWrapProperty().addListener((ObservableValue<? extends Boolean> ov, Boolean t, Boolean newWordWrap) -> {
             mLogOutPanel.setWrapText(newWordWrap);
             mLogErrPanel.setWrapText(newWordWrap);
         });

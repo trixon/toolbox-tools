@@ -15,7 +15,6 @@
  */
 package se.trixon.tools.fbd;
 
-import se.trixon.toolbox.api.DateSource;
 import com.google.gson.annotations.SerializedName;
 import java.io.File;
 import java.nio.file.FileSystems;
@@ -29,8 +28,9 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.SystemHelper;
-import se.trixon.toolbox.api.NameCase;
-import se.trixon.toolbox.api.Preferences;
+import se.trixon.toolbox.api.TbDateSource;
+import se.trixon.toolbox.api.TbNameCase;
+import se.trixon.toolbox.api.TbPreferences;
 import se.trixon.tools.fbd.Operation.Command;
 import se.trixon.tools.fbd.ui.FbdModule;
 
@@ -43,10 +43,10 @@ public class Profile implements Comparable<Profile>, Cloneable {
     private transient final ResourceBundle mBundle = SystemHelper.getBundle(Profile.class, "Bundle");
     private transient final ResourceBundle mBundleUI = SystemHelper.getBundle(FbdModule.class, "Bundle");
     @SerializedName("case_base")
-    private NameCase mCaseBase = NameCase.UNCHANGED;
+    private TbNameCase mCaseBase = TbNameCase.UNCHANGED;
     private transient String mCaseBaseString;
     @SerializedName("case_ext")
-    private NameCase mCaseExt = NameCase.UNCHANGED;
+    private TbNameCase mCaseExt = TbNameCase.UNCHANGED;
     private transient String mCaseExtString;
     @SerializedName("operation")
     private Command mCommand;
@@ -54,7 +54,7 @@ public class Profile implements Comparable<Profile>, Cloneable {
     @SerializedName("date_pattern")
     private String mDatePattern;
     @SerializedName("date_source")
-    private DateSource mDateSource = DateSource.FILE_CREATED;
+    private TbDateSource mDateSource = TbDateSource.FILE_CREATED;
     private transient String mDateSourceString;
     @SerializedName("description")
     private String mDescription;
@@ -116,11 +116,11 @@ public class Profile implements Comparable<Profile>, Cloneable {
         return mName.compareTo(o.getName());
     }
 
-    public NameCase getCaseBase() {
+    public TbNameCase getCaseBase() {
         return mCaseBase;
     }
 
-    public NameCase getCaseExt() {
+    public TbNameCase getCaseExt() {
         return mCaseExt;
     }
 
@@ -136,7 +136,7 @@ public class Profile implements Comparable<Profile>, Cloneable {
         return mDatePattern;
     }
 
-    public DateSource getDateSource() {
+    public TbDateSource getDateSource() {
         return mDateSource;
     }
 
@@ -220,21 +220,21 @@ public class Profile implements Comparable<Profile>, Cloneable {
         }
 
         try {
-            mDateFormat = new SimpleDateFormat(mDatePattern, Preferences.getInstance().general().getLocale());
+            mDateFormat = new SimpleDateFormat(mDatePattern, TbPreferences.getInstance().general().getLocale());
         } catch (Exception e) {
             addValidationError(String.format(mBundle.getString("invalid_date_pattern"), mDatePattern));
         }
 
         if (mDateSourceString != null) {
             try {
-                mDateSource = DateSource.valueOf(mDateSourceString.toUpperCase());
+                mDateSource = TbDateSource.valueOf(mDateSourceString.toUpperCase());
             } catch (Exception e) {
                 addValidationError(String.format(mBundle.getString("invalid_date_source"), mDateSourceString));
             }
         }
 
         if (mCaseBaseString != null) {
-            mCaseBase = NameCase.getCase(mCaseBaseString);
+            mCaseBase = TbNameCase.getCase(mCaseBaseString);
             if (mCaseBase == null) {
                 addValidationError(String.format(mBundle.getString("invalid_case_base"), mCaseBaseString));
             }
@@ -242,7 +242,7 @@ public class Profile implements Comparable<Profile>, Cloneable {
         }
 
         if (mCaseExtString != null) {
-            mCaseExt = NameCase.getCase(mCaseExtString);
+            mCaseExt = TbNameCase.getCase(mCaseExtString);
             if (mCaseExt == null) {
                 addValidationError(String.format(mBundle.getString("invalid_case_ext"), mCaseExtString));
             }
@@ -259,11 +259,11 @@ public class Profile implements Comparable<Profile>, Cloneable {
         return mValidationErrorBuilder.length() == 0;
     }
 
-    public void setCaseBase(NameCase caseBase) {
+    public void setCaseBase(TbNameCase caseBase) {
         mCaseBase = caseBase;
     }
 
-    public void setCaseExt(NameCase caseExt) {
+    public void setCaseExt(TbNameCase caseExt) {
         mCaseExt = caseExt;
     }
 
@@ -275,7 +275,7 @@ public class Profile implements Comparable<Profile>, Cloneable {
         mDatePattern = datePattern;
     }
 
-    public void setDateSource(DateSource dateSource) {
+    public void setDateSource(TbDateSource dateSource) {
         mDateSource = dateSource;
     }
 
@@ -375,8 +375,8 @@ public class Profile implements Comparable<Profile>, Cloneable {
         conditionalAppendDebugOption(b, mFollowLinks, Dict.FOLLOW_LINKS.toString());
         conditionalAppendDebugOption(b, mRecursive, Dict.RECURSIVE.toString());
         conditionalAppendDebugOption(b, mReplaceExisting, Dict.REPLACE.toString());
-        conditionalAppendDebugOption(b, mCaseBase != NameCase.UNCHANGED, Dict.BASENAME.toString() + " " + mCaseBase);
-        conditionalAppendDebugOption(b, mCaseExt != NameCase.UNCHANGED, Dict.EXTENSION.toString() + " " + mCaseExt);
+        conditionalAppendDebugOption(b, mCaseBase != TbNameCase.UNCHANGED, Dict.BASENAME.toString() + " " + mCaseBase);
+        conditionalAppendDebugOption(b, mCaseExt != TbNameCase.UNCHANGED, Dict.EXTENSION.toString() + " " + mCaseExt);
 
         return b.toString();
     }

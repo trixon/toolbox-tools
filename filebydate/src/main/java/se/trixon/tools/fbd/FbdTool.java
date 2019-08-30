@@ -16,15 +16,15 @@
 package se.trixon.tools.fbd;
 
 import org.openide.util.lookup.ServiceProvider;
-import se.trixon.toolbox.api.Tool;
+import se.trixon.toolbox.api.TbTool;
 import se.trixon.tools.fbd.ui.FbdModule;
 
 /**
  *
  * @author Patrik Karlström
  */
-@ServiceProvider(service = Tool.class)
-public class FbdTool extends Tool {
+@ServiceProvider(service = TbTool.class)
+public class FbdTool extends TbTool {
 
     public FbdTool() {
         setName("FileByDate");

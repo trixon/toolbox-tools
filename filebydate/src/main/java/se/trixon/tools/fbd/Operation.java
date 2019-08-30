@@ -15,8 +15,8 @@
  */
 package se.trixon.tools.fbd;
 
-import se.trixon.toolbox.api.DateSource;
-import se.trixon.toolbox.api.NameCase;
+import se.trixon.toolbox.api.TbDateSource;
+import se.trixon.toolbox.api.TbNameCase;
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
 import com.drew.metadata.Directory;
@@ -108,19 +108,19 @@ public class Operation {
                     String destFilename = sourceFile.getName();
                     String base = FilenameUtils.getBaseName(destFilename);
                     String ext = FilenameUtils.getExtension(destFilename);
-                    NameCase caseBase = mProfile.getCaseBase();
-                    NameCase caseExt = mProfile.getCaseExt();
+                    TbNameCase caseBase = mProfile.getCaseBase();
+                    TbNameCase caseExt = mProfile.getCaseExt();
 
-                    if (caseBase != NameCase.UNCHANGED || caseExt != NameCase.UNCHANGED) {
-                        if (caseBase == NameCase.LOWER) {
+                    if (caseBase != TbNameCase.UNCHANGED || caseExt != TbNameCase.UNCHANGED) {
+                        if (caseBase == TbNameCase.LOWER) {
                             base = base.toLowerCase();
-                        } else if (caseBase == NameCase.UPPER) {
+                        } else if (caseBase == TbNameCase.UPPER) {
                             base = base.toUpperCase();
                         }
 
-                        if (caseExt == NameCase.LOWER) {
+                        if (caseExt == TbNameCase.LOWER) {
                             ext = ext.toLowerCase();
-                        } else if (caseBase == NameCase.UPPER) {
+                        } else if (caseBase == TbNameCase.UPPER) {
                             ext = ext.toUpperCase();
                         }
 
@@ -234,15 +234,15 @@ public class Operation {
 
     private Date getDate(File sourceFile) throws IOException, ImageProcessingException {
         Date date = new Date(System.currentTimeMillis());
-        DateSource dateSource = mProfile.getDateSource();
+        TbDateSource dateSource = mProfile.getDateSource();
 
-        if (dateSource == DateSource.FILE_CREATED) {
+        if (dateSource == TbDateSource.FILE_CREATED) {
             BasicFileAttributes attr = Files.readAttributes(sourceFile.toPath(), BasicFileAttributes.class);
             date = new Date(attr.creationTime().toMillis());
-        } else if (dateSource == DateSource.FILE_MODIFIED) {
+        } else if (dateSource == TbDateSource.FILE_MODIFIED) {
             BasicFileAttributes attr = Files.readAttributes(sourceFile.toPath(), BasicFileAttributes.class);
             date = new Date(attr.lastModifiedTime().toMillis());
-        } else if (dateSource == DateSource.EXIF_ORIGINAL) {
+        } else if (dateSource == TbDateSource.EXIF_ORIGINAL) {
             Metadata metadata;
             Directory directory = null;
 

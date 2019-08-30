@@ -282,11 +282,11 @@ public class Profile extends ProfileBase implements Comparable<Profile>, Cloneab
         LinkedHashMap<String, String> values = new LinkedHashMap<>();
 
         values.put(Dict.CALENDAR_LANGUAGE.toString(), mPreferencesGeneral.getLocale().getDisplayName());
-        values.put(Dict.THUMBNAIL.toString(), String.valueOf(mPreferencesMapollage.getThumbnailSize()));
-        values.put(Dict.BORDER_SIZE.toString(), String.valueOf(mPreferencesMapollage.getThumbnailBorderSize()));
-        values.put(String.format("%s %s", Dict.DEFAULT.toString(), Dict.LATITUDE.toString()), String.valueOf(mPreferencesMapollage.getDefaultLat()));
-        values.put(String.format("%s %s", Dict.DEFAULT.toString(), Dict.LONGITUDE.toString()), String.valueOf(mPreferencesMapollage.getDefaultLon()));
-        values.put(bundle.getString("ProgressPanel.autoOpenCheckBox"), BooleanHelper.asYesNo(mPreferencesMapollage.isAutoOpen()));
+        values.put(Dict.THUMBNAIL.toString(), String.valueOf(mPreferences.getThumbnailSize()));
+        values.put(Dict.BORDER_SIZE.toString(), String.valueOf(mPreferences.getThumbnailBorderSize()));
+        values.put(String.format("%s %s", Dict.DEFAULT.toString(), Dict.LATITUDE.toString()), String.valueOf(mPreferences.getDefaultLat()));
+        values.put(String.format("%s %s", Dict.DEFAULT.toString(), Dict.LONGITUDE.toString()), String.valueOf(mPreferences.getDefaultLon()));
+        values.put(bundle.getString("ProgressPanel.autoOpenCheckBox"), BooleanHelper.asYesNo(mPreferences.isAutoOpen()));
 
         profileInfo.setTitle(Dict.OPTIONS.toString());
         profileInfo.setValues(values);

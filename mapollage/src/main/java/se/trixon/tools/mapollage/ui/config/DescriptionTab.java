@@ -30,7 +30,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.icons.material.MaterialIcon;
-import static se.trixon.toolbox.api.Toolbox.*;
+import static se.trixon.toolbox.api.TbToolbox.*;
 import se.trixon.tools.mapollage.profile.Profile;
 import se.trixon.tools.mapollage.profile.ProfileDescription;
 import se.trixon.tools.mapollage.profile.ProfileDescription.DescriptionMode;

@@ -13,13 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package se.trixon.tools.mapollage;
+package se.trixon.tools.fbd;
+
+import com.dlsc.preferencesfx.model.Category;
+import org.openide.util.lookup.ServiceProvider;
+import se.trixon.toolbox.api.TbToolPreference;
 
 /**
  *
  * @author Patrik Karlström
  */
-public class Aaaaa {
+@ServiceProvider(service = TbToolPreference.class)
+public class FbdPreferences extends TbToolPreference {
 
-    public static MapollagePreferences mMapollagePreferences = new MapollagePreferences();
+    public FbdPreferences() {
+        mCategory = Category.of("FileByDate");
+    }
+
 }

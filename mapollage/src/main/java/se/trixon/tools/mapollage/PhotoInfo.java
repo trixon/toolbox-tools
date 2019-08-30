@@ -36,6 +36,7 @@ import java.util.TimeZone;
 import javax.imageio.ImageIO;
 import se.trixon.almond.util.GraphicsHelper;
 import se.trixon.almond.util.ImageScaler;
+import se.trixon.toolbox.api.TbPreferences;
 
 /**
  *
@@ -53,7 +54,7 @@ public class PhotoInfo {
     private Metadata mMetadata;
     private int mOrientation;
     private Dimension mOriginalDimension = null;
-    private final MapollagePreferences mPreferences = Aaaaa.mMapollagePreferences;
+    private final MapollagePreferences mPreferences = TbPreferences.getInstance().getForClass(MapollagePreferences.class);
 
     public PhotoInfo(File file, boolean includeNullCoordinate) {
         mFile = file;

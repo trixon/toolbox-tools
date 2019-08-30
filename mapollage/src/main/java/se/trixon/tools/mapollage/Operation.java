@@ -71,6 +71,7 @@ import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.Scaler;
 import se.trixon.almond.util.SystemHelper;
 import se.trixon.almond.util.ext.GrahamScan;
+import se.trixon.toolbox.api.TbPreferences;
 import se.trixon.tools.mapollage.profile.Profile;
 import se.trixon.tools.mapollage.profile.ProfileDescription;
 import se.trixon.tools.mapollage.profile.ProfileDescription.DescriptionSegment;
@@ -112,7 +113,7 @@ public class Operation implements Runnable {
     private PhotoInfo mPhotoInfo;
     private Folder mPolygonFolder;
     private final HashMap<Folder, Folder> mPolygonRemovals = new HashMap<>();
-    private final MapollagePreferences mPreferences = Aaaaa.mMapollagePreferences;
+    private final MapollagePreferences mPreferences = TbPreferences.getInstance().getForClass(MapollagePreferences.class);
     private final Profile mProfile;
     private final ProfileDescription mProfileDescription;
     private final ProfileFolder mProfileFolder;

@@ -42,9 +42,9 @@ import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.SystemHelper;
 import se.trixon.almond.util.fx.control.FileChooserPane;
 import se.trixon.almond.util.fx.control.FileChooserPane.ObjectMode;
-import se.trixon.toolbox.api.NameCase;
-import se.trixon.toolbox.api.Preferences;
-import se.trixon.toolbox.api.DateSource;
+import se.trixon.toolbox.api.TbDateSource;
+import se.trixon.toolbox.api.TbNameCase;
+import se.trixon.toolbox.api.TbPreferences;
 import se.trixon.tools.fbd.Operation.Command;
 import se.trixon.tools.fbd.Profile;
 import se.trixon.tools.fbd.ProfileManager;
@@ -56,11 +56,11 @@ import se.trixon.tools.fbd.ProfileManager;
 public class ProfilePanel extends GridPane {
 
     private final ResourceBundle mBundleUI = SystemHelper.getBundle(FbdModule.class, "Bundle");
-    private ComboBox<NameCase> mCaseBaseComboBox;
-    private ComboBox<NameCase> mCaseExtComboBox;
+    private ComboBox<TbNameCase> mCaseBaseComboBox;
+    private ComboBox<TbNameCase> mCaseExtComboBox;
     private ComboBox<String> mDatePatternComboBox;
     private Label mDatePatternLabel;
-    private ComboBox<DateSource> mDateSourceComboBox;
+    private ComboBox<TbDateSource> mDateSourceComboBox;
     private TextField mDescTextField;
     private FileChooserPane mDestChooserPane;
     private ComboBox<String> mFilePatternComboBox;
@@ -68,7 +68,7 @@ public class ProfilePanel extends GridPane {
     private TextField mNameTextField;
     private Button mOkButton;
     private ComboBox<Command> mOperationComboBox;
-    private final Preferences mPreferences = Preferences.getInstance();
+    private final TbPreferences mTbPreferences = TbPreferences.getInstance();
     private final Profile mProfile;
     private final ProfileManager mProfileManager = ProfileManager.getInstance();
     private CheckBox mRecursiveCheckBox;
@@ -219,9 +219,9 @@ public class ProfilePanel extends GridPane {
                 "yyyy/ww/u"
         ));
 
-        mCaseBaseComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(NameCase.values())));
-        mCaseExtComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(NameCase.values())));
-        mDateSourceComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(DateSource.values())));
+        mCaseBaseComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(TbNameCase.values())));
+        mCaseExtComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(TbNameCase.values())));
+        mDateSourceComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(TbDateSource.values())));
         mOperationComboBox.setItems(FXCollections.observableArrayList(Arrays.asList(Command.COPY, Command.MOVE)));
     }
 
@@ -272,7 +272,7 @@ public class ProfilePanel extends GridPane {
         String datePreview;
 
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(mDatePatternComboBox.getValue(), mPreferences.general().getLocale());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(mDatePatternComboBox.getValue(), mTbPreferences.general().getLocale());
             datePreview = simpleDateFormat.format(new Date(System.currentTimeMillis()));
         } catch (IllegalArgumentException ex) {
             datePreview = Dict.Dialog.ERROR.toString();

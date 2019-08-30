@@ -30,20 +30,22 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import org.openide.util.lookup.ServiceProvider;
 import se.trixon.almond.util.Dict;
 import se.trixon.almond.util.SystemHelper;
+import se.trixon.toolbox.api.TbToolPreference;
 import se.trixon.tools.mapollage.ui.MapollageModule;
 
 /**
  *
  * @author Patrik Karlström
  */
-public class MapollagePreferences {
+@ServiceProvider(service = TbToolPreference.class)
+public class MapollagePreferences extends TbToolPreference {
 
     private final BooleanProperty mAutoOpen = new SimpleBooleanProperty();
     private final IntegerField mBorderSizeControl;
     private final ResourceBundle mBundle = SystemHelper.getBundle(MapollageModule.class, "Bundle");
-    private final Category mCategory;
     private final BooleanProperty mCleanNS2 = new SimpleBooleanProperty(true);
     private final BooleanProperty mCleanSpace = new SimpleBooleanProperty(true);
     private final DoubleProperty mDefaultLat = new SimpleDoubleProperty(57.6);
@@ -74,10 +76,6 @@ public class MapollagePreferences {
                         Setting.of(mBundle.getString("ProgressPanel.autoOpenCheckBox"), mAutoOpen).customKey("mapollage.auto_open")
                 )
         );
-    }
-
-    public Category getCategory() {
-        return mCategory;
     }
 
     public double getDefaultLat() {
