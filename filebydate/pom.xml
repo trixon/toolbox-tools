@@ -10,7 +10,7 @@
     <artifactId>filebydate</artifactId>
     <name>filebydate</name>
     <packaging>nbm</packaging>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -23,6 +23,9 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
+                        <manifest>
+                            <mainClass>se.trixon.tools.fbd.FileByDate</mainClass>
+                        </manifest>
                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
                 </configuration>
